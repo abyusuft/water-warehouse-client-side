@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../../../firebase.init';
 
@@ -44,9 +44,9 @@ const Registar = () => {
         navigate('/');
     }
     return (
-        <div>
-            <h2>This is Registar</h2>
-            <Form onSubmit={handleRegister} className='w-25 mx-auto mb-5'>
+        <div className='mt-5'>
+            <h2 className='mb-3'>Registar</h2>
+            <Form onSubmit={handleRegister} className='w-50 mx-auto border border-primary p-3 rounded rounded-3 mb-4'>
                 <Form.Group className="mb-3" controlId="formBasicName">
                     <Form.Control type="text" name="name" placeholder="Enter Your Name" required />
                 </Form.Group>
@@ -63,10 +63,14 @@ const Registar = () => {
                     <Form.Check onClick={() => setAgree(!agree)} type="checkbox" label="Agree our Terms and Condition" />
                 </Form.Group>
 
-                <button style={agree ? { opacity: "1" } : { opacity: ".7" }} className='d-block mx-auto ' type="submit" disabled={!agree} >
+                <button style={agree ? { opacity: "1" } : { opacity: ".7" }} className='d-block mx-auto btn btn-primary w-100' type="submit" disabled={!agree} >
                     Register
                 </button>
             </Form>
+            <div >
+                <p className=' text-white text-center mt-2 bg-info py-2 w-50 mx-auto rounded rounded-3'>Already have an Account? <Link className='fw-bold text-warning   ps-3' to='/login'>Login</Link></p>
+
+            </div>
         </div>
     );
 };

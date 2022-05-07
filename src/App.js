@@ -13,12 +13,12 @@ import MyItems from './components/Pages/Items/MyItems/MyItems';
 import ManageItems from './components/Pages/Items/ManageItems/ManageItems';
 import AddItem from './components/Pages/Items/AddItem/AddItem';
 import ItemDetails from './components/Pages/Items/ItemDetails/ItemDetails';
+import RequirAuth from './components/Shared/RequirAuth/RequirAuth';
 
 function App() {
   return (
     <div className="App">
       <Header></Header>
-
 
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
@@ -28,23 +28,27 @@ function App() {
         <Route path='/registar' element={<Registar></Registar>}></Route>
 
         <Route path='/additem' element={
-          <AddItem></AddItem>
+          <RequirAuth>
+            <AddItem></AddItem>
+          </RequirAuth>
         }></Route>
-
-
 
         <Route path='/myitems' element={
-          <MyItems></MyItems>
+          <RequirAuth>
+            <MyItems></MyItems>
+          </RequirAuth>
         }></Route>
 
-
-
         <Route path='/manageitems' element={
-          <ManageItems></ManageItems>
+          <RequirAuth>
+            <ManageItems></ManageItems>
+          </RequirAuth>
         }></Route>
 
         <Route path='/manageitem/:itemID' element={
-          <ItemDetails></ItemDetails>
+          <RequirAuth>
+            <ItemDetails></ItemDetails>
+          </RequirAuth>
         }></Route>
 
         <Route path='*' element={<NotFound></NotFound>}></Route>

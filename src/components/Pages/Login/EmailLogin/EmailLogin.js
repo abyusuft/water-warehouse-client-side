@@ -1,15 +1,19 @@
 import React from 'react';
 import auth from '../../../../firebase.init';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { toast, ToastContainer } from 'react-toastify';
 import { Button, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 
 const EmailLogin = () => {
     const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
+    const [user1] = useAuthState(auth);
 
+    const location = useLocation();
+    const navigate = useNavigate();
 
+    const from = location.state?.from?.pathname || "/";
 
     if (error) {
         return toast(`Error: ${error?.message}`)
@@ -17,8 +21,8 @@ const EmailLogin = () => {
     if (loading) {
 
     }
-    if (user) {
-
+    if (user || user1) {
+        navigate(from, { replace: true });
     }
 
     const handleFormSubmit = (event) => {
@@ -28,16 +32,13 @@ const EmailLogin = () => {
         signInWithEmailAndPassword(email, password);
     }
 
-
-
     return (
-        <div>
-            <h2>This is Login Page</h2>
-            <Form className='w-50 mx-auto' onSubmit={handleFormSubmit}>
+        <div className='mt-5'>
+            <h2 className='mb-3'>Login</h2>
+            <Form className='w-50 mx-auto border border-primary p-3 rounded rounded-3 mb-4' onSubmit={handleFormSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" name="email" placeholder="Enter email" />
-
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -45,14 +46,18 @@ const EmailLogin = () => {
                     <Form.Control type="password" name="password" placeholder="Password" />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <p className='text-center'>New to Water? <Link className='text-decoration-none fw-bold' to='/registar'> Register</Link></p>
 
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
-                    Submit
+                <Button className='w-100' variant="primary" type="submit">
+                    Login
                 </Button>
             </Form>
+            <div >
+                <p className=' text-white text-center mt-2 bg-info py-2 w-50 mx-auto rounded rounded-3'>New to Water Warehouse? <Link className='fw-bold text-warning   ps-3' to='/registar'>Register</Link></p>
+                <p className=' text-white text-center mt-2 bg-primary py-2 w-50 mx-auto rounded rounded-3'>Forgot Your Password?<Link className='fw-bold  text-warning ps-3' to='/registar'>Reset Password</Link></p>
+
+            </div>
             <ToastContainer />
 
         </div>
