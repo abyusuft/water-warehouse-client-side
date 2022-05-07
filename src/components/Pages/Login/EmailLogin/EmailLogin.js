@@ -2,8 +2,9 @@ import React from 'react';
 import auth from '../../../../firebase.init';
 import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { toast, ToastContainer } from 'react-toastify';
-import { Button, Form } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import SocialLogin from '../SocialLogin/SocialLogin';
 
 
 const EmailLogin = () => {
@@ -49,16 +50,22 @@ const EmailLogin = () => {
 
                 </Form.Group>
 
-                <Button className='w-100' variant="primary" type="submit">
+                <button className='d-block mx-auto btn btn-primary w-100' type="submit"  >
                     Login
-                </Button>
+                </button>
             </Form>
             <div >
                 <p className=' text-white text-center mt-2 bg-info py-2 w-50 mx-auto rounded rounded-3'>New to Water Warehouse? <Link className='fw-bold text-warning   ps-3' to='/registar'>Register</Link></p>
-                <p className=' text-white text-center mt-2 bg-primary py-2 w-50 mx-auto rounded rounded-3'>Forgot Your Password?<Link className='fw-bold  text-warning ps-3' to='/registar'>Reset Password</Link></p>
+                <p className=' text-white text-center mt-2 bg-primary py-2 w-50 mx-auto rounded rounded-3'>Forgot Your Password?<span className='fw-bold  text-warning ps-3'>Reset Password</span></p>
 
             </div>
             <ToastContainer />
+            <div>
+                <p style={{ fontSize: '22px' }}>----- OR  -----</p>
+            </div>
+            <div>
+                <SocialLogin></SocialLogin>
+            </div>
 
         </div>
     );
