@@ -39,7 +39,7 @@ function App() {
 
 
 
-        <Route path='/manageitem' element={
+        <Route path='/manageitems' element={
           <ManageItems></ManageItems>
         }></Route>
 
