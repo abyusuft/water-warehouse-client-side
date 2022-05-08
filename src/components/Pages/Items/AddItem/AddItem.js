@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../../../firebase.init';
 
@@ -30,7 +31,8 @@ const AddItem = () => {
 
     return (
         <div>
-            <h2 className='mt-5 mb-5'>Add Items to Inventory</h2>
+            <h2 className='mt-5 mb-3'>Add Items to Inventory</h2>
+            <Link className='mb-3 d-block btn btn-success w-25 mx-auto' to='/manageitems'>View/Manage Items</Link>
             <form className='w-50 mx-auto' onSubmit={handleSubmit(onSubmit)}>
                 <input className='w-100 mb-2 p-2' placeholder='Item Name' type="text"  {...register("itemName", { required: true })} /> <br />
                 <input className='w-100 mb-2 p-2' placeholder=' Item Description' type="text"  {...register("description", { required: true })} /> <br />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../../../firebase.init';
 import useItems from '../../../../hooks/useItems';
@@ -38,6 +38,7 @@ const ManageItems = () => {
     return (
         <div className='m-5'>
             <h2 className='mb-3'>Manage Items</h2>
+            <Link className='mb-3 d-block btn btn-success w-25 mx-auto' to='/additem'>Add New Item</Link>
             <table className='w-100 mx-auto table table-hover'>
                 <thead style={{ backgroundColor: "black" }}>
                     <tr className='border'>
