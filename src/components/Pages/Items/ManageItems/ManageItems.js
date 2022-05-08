@@ -35,6 +35,8 @@ const ManageItems = () => {
     const handleUpdateItem = id => {
         navigate(`/manageitem/${id}`)
     }
+
+
     return (
         <div className='m-5'>
             <h2 className='mb-3'>Manage Items</h2>

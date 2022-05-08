@@ -86,7 +86,11 @@ const MyItems = () => {
                             )
                         }
                     </tbody>
+
                 </table>
+                {
+                    !items.length ? <p style={{ fontSize: '20px' }} className='text-danger mt-5 border-0 fw-bold'>You havent added any items Yet <Link className='mb-3 btn btn-success mx-auto' to='/additem'>Add New Item</Link></p> : ''
+                }
             </div >
         </div>
     );
