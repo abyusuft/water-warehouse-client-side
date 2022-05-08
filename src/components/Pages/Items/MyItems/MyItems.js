@@ -9,8 +9,8 @@ const MyItems = () => {
     const [items, setItems] = useState([]);
     const userEmail = user?.email;
     useEffect(() => {
-        // const url = `https://infinite-chamber-05389.herokuapp.com/itemsbyemail?email=${userEmail}`
-        const url = `http://localhost:5000/itemsbyemail?email=${userEmail}`;
+        const url = `https://infinite-chamber-05389.herokuapp.com/itemsbyemail?email=${userEmail}`
+        // const url = `http://localhost:5000/itemsbyemail?email=${userEmail}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setItems(data));
