@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
-import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../../../firebase.init';
@@ -10,6 +10,7 @@ const Registar = () => {
     const [agree, setAgree] = useState(false);
     const [updateProfile] = useUpdateProfile(auth);
     const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+    const [sendEmailVerification] = useSendEmailVerification(auth);
 
     const navigate = useNavigate();
 
@@ -39,8 +40,9 @@ const Registar = () => {
             return;
         }
         await updateProfile({ displayName: name });
-        toast("Verification Email Sent");
         await createUserWithEmailAndPassword(email, password);
+        await sendEmailVerification();
+        toast('Verification Email Sent');
         navigate('/');
     }
     return (

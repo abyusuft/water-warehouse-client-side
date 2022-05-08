@@ -8,7 +8,7 @@ const SocialLogin = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
 
     if (error) {
-        toast(error.message)
+        toast(error.message);
     }
 
     const handleGoogleSignIn = () => {
