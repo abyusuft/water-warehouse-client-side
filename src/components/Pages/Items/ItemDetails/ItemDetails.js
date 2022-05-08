@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import auth from '../../../../firebase.init';
 
 const ItemDetails = () => {
     const { itemId } = useParams();
     const [item, setItem] = useState({});
-    const { description, email, img, itemName, price, qty, supplier } = item;
+    const { _id, description, email, img, itemName, price, qty, supplier } = item;
+    const [user] = useAuthState(auth);
+    // Get Item Details API
     useEffect(() => {
         const url = `https://infinite-chamber-05389.herokuapp.com/item/${itemId}`;
         // const url = `http://localhost:5000/item/${itemId}`;
@@ -12,7 +18,59 @@ const ItemDetails = () => {
             .then(res => res.json())
             .then(data => setItem(data))
 
-    }, [itemId])
+    }, [itemId, qty, item])
+
+    // Delivered Item API 
+    const defaultDeliveryQty = 1;
+    const { register, handleSubmit } = useForm();
+    const onSubmit = (data, e) => {
+        const oldQty = qty;
+        const deliverQty = data.deliverqty;
+        const newQtydelivered = parseInt(oldQty) - parseInt(deliverQty);
+        const newQty = { newQtydelivered }
+
+        // const url = `https://infinite-chamber-05389.herokuapp.com/deliveritem/${itemId}`;
+        const url = `http://localhost:5000/deliveritem/${itemId}`;
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newQty)
+        })
+            .then(res => res.json())
+            .then(data => {
+                toast(`${deliverQty} Item deliverd successfully`);
+            })
+
+
+    }
+
+    // Restock Item API
+    const handleRestock = (event) => {
+        event.preventDefault();
+        const oldQty = qty;
+        const restockQty = event.target.restock.value;
+        const qtyAfterRestock = parseInt(oldQty) + parseInt(restockQty)
+        const newQty = { qtyAfterRestock }
+        console.log(oldQty, restockQty, qtyAfterRestock);
+
+        // const url = `https://infinite-chamber-05389.herokuapp.com/restockitem/${itemId}`;
+        const url = `http://localhost:5000/restockitem/${itemId}`;
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newQty)
+        })
+            .then(res => res.json())
+            .then(data => {
+                toast(`${restockQty} Item restock successfully`);
+            })
+
+    }
+
     return (
         <div>
             <h2 className='mt-5 mb-3'>Item Detail</h2>
@@ -27,10 +85,18 @@ const ItemDetails = () => {
                     <p>price : {price}</p>
                     <p>Added By : {email}</p>
                     <p>Current Stock : <span className='border p-2 bg-primary text-white rounded'>{qty}</span></p>
-                    <button>Deliver</button>
-                    <form className='mt-2' action="">
-                        <input type="number" placeholder='Qty' />
-                        <input type="submit" value="Restock" />
+
+                    <form className='' onSubmit={handleSubmit(onSubmit)}>
+                        <input className='d-none  w-50 mb-2 p-2' readOnly value={_id} type="text"  {...register("itemId")} />
+                        <input className='d-none  w-50 mb-2 p-2' readOnly value={defaultDeliveryQty} type="number"  {...register("deliverqty")} />
+                        <input className='d-none w-50 mb-2 p-2' readOnly value={user?.email} type="email"  {...register("email")} />
+                        <input className='w-50 mb-2 p-2 btn btn-danger' type="submit" value="Deliver" />
+                    </form>
+
+
+                    <form className='mt-2' onSubmit={handleRestock}>
+                        <input className='w-50 p-1' name='restock' type="number" placeholder='Restock Qty' /> <br />
+                        <input className=' btn btn-primary w-50' type="submit" value="Restock" />
                     </form>
 
 
