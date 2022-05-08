@@ -26,9 +26,12 @@ const ItemDetails = () => {
     const defaultDeliveryQty = 1;
     const { register, handleSubmit } = useForm();
     const onSubmit = (data, e) => {
-        const oldQty = qty;
-        const deliverQty = data.deliverqty;
-        const newQtydelivered = parseInt(oldQty) - parseInt(deliverQty);
+        const oldQty = parseInt(qty);
+        const deliverQty = parseInt(data.deliverqty);
+        const newQtydelivered = oldQty - deliverQty;
+        if (deliverQty > oldQty) {
+            return toast('Not Enough Stock');
+        }
         const newQty = { newQtydelivered }
 
         const url = `https://infinite-chamber-05389.herokuapp.com/deliveritem/${itemId}`;
@@ -101,13 +104,13 @@ const ItemDetails = () => {
     }, [itemId, soldQty])
 
     return (
-        <div>
-            <h2 className='mt-5 mb-3'>Item Detail</h2>
+        <div className='mb-5'>
+            <h2 className='mt-5 mb-5 fw-bolder text-uppercase'>Item Detail</h2>
             <div className='row'>
-                <div className='col-4 text-end'>
-                    <img src={img} style={{ maxHeight: '300px' }} alt="" />
+                <div className='col-5 text-end'>
+                    <img src={img} style={{ maxHeight: '400px' }} alt="" />
                 </div>
-                <div className='col-8 text-start'>
+                <div className='col-7 text-start'>
                     <h2>{itemName}</h2>
                     <p>{description}</p>
                     <p>Supplier name: {supplier}</p>
@@ -118,8 +121,8 @@ const ItemDetails = () => {
                     <p>Current Stock : <span className='border p-2 bg-primary text-white rounded'>{qty}</span></p>
 
                     <form className='' onSubmit={handleSubmit(onSubmit)}>
-                        <input className='d-none w-50 mb-2 p-2' readOnly value={_id} type="text"  {...register("itemId")} /> <br />
-                        <input className='d-none  w-50 mb-2 p-2' readOnly value={defaultDeliveryQty} type="number"  {...register("deliverqty")} />
+                        <input className='d-none  w-50 mb-2 p-2' readOnly value={_id} type="text"  {...register("itemId")} />
+                        <input className='d-none w-50 mb-2 p-2' readOnly value={defaultDeliveryQty} type="number"  {...register("deliverqty")} />
                         <input className='d-none w-50 mb-2 p-2' readOnly value={user?.email} type="email"  {...register("email")} />
                         <input className='w-50 mb-2 p-2 btn btn-danger' type="submit" value="Deliver" />
                     </form>
