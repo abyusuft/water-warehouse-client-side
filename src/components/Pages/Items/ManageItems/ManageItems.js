@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../../../firebase.init';
 import useItems from '../../../../hooks/useItems';
@@ -9,6 +10,7 @@ const ManageItems = () => {
     const [user] = useAuthState(auth);
     console.log(user);
     const matched = false;
+    const navigate = useNavigate();
 
 
 
@@ -29,8 +31,9 @@ const ManageItems = () => {
                     setItems(remaining);
                 })
         }
-
-
+    }
+    const handleUpdateItem = id => {
+        navigate(`/manageitem/${id}`)
     }
     return (
         <div className='m-5'>
@@ -61,10 +64,16 @@ const ManageItems = () => {
                                 <td className='border'>{item.price} &#2547;</td>
                                 <td className='border'>{item.qty}</td>
                                 <td className='border'>{item.email}</td>
-                                <td className='border'><button
-                                    disabled={item.email === user.email ? matched : !matched}
-                                    onClick={() => handleDeleteItem(item._id)}
-                                    className='btn btn-danger'>X</button></td>
+                                <td className='border'>
+                                    <button
+                                        title='Update'
+                                        onClick={() => handleUpdateItem(item._id)}
+                                        className='btn btn-primary me-2'>U</button>
+                                    <button
+                                        title='Delete'
+                                        disabled={item.email === user.email ? matched : !matched}
+                                        onClick={() => handleDeleteItem(item._id)}
+                                        className='btn btn-danger'>X</button></td>
                             </tr>
                         )
                     }
