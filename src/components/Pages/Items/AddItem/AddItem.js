@@ -26,7 +26,7 @@ const AddItem = () => {
                 toast('Item Added Successfully');
             })
 
-        e.target.reset();
+        // e.target.reset();
     };
 
     return (
