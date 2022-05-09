@@ -58,7 +58,7 @@ const ManageItems = () => {
                     {
                         items.map(item =>
                             <tr className='border' key={item._id}>
-                                <td className='border p-2'>
+                                <td className='border p-1'>
                                     <img src={item.img} width={50} height={40} alt="" />
                                 </td>
                                 <td className='border'>{item.itemName}</td>

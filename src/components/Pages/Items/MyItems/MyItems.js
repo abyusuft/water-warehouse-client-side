@@ -44,7 +44,7 @@ const MyItems = () => {
     }
     return (
         <div style={{ minHeight: "65vh" }}>
-            <div className='m-5'>
+            <div className='my-5'>
                 <h2 className='mb-3'>My Items</h2>
                 <Link className='mb-3 d-block btn btn-success w-25 mx-auto' to='/additem'>Add New Item</Link>
                 <Table responsive striped bordered hover variant="">
@@ -65,7 +65,7 @@ const MyItems = () => {
                         {
                             items.map(item =>
                                 <tr className='border' key={item._id}>
-                                    <td className='border p-2'>
+                                    <td className='border p-1'>
                                         <img src={item.img} width={50} height={40} alt="" />
                                     </td>
                                     <td className='border'>{item.itemName}</td>
