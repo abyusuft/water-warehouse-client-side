@@ -46,7 +46,7 @@ const MyItems = () => {
         <div style={{ minHeight: "65vh" }}>
             <div className='my-5'>
                 <h2 className='mb-3'>My Items</h2>
-                <Link className='mb-3 d-block btn btn-success w-25 mx-auto' to='/additem'>Add New Item</Link>
+                <Link className='mb-3 d-sm-block btn btn-success w-75  mx-auto' to='/additem'>Add New Item</Link>
                 <Table responsive striped bordered hover variant="">
                     <thead style={{ backgroundColor: "black" }}>
                         <tr className='border'>
