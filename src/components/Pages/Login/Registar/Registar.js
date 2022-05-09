@@ -50,7 +50,7 @@ const Registar = () => {
     return (
         <div className='mt-5'>
             <h2 className='mb-3'>Registar</h2>
-            <Form onSubmit={handleRegister} className='w-75 mx-auto border border-primary p-3 rounded rounded-3 mb-4'>
+            <Form onSubmit={handleRegister} className='col-10 col-md-6 mx-auto border border-primary p-3 rounded rounded-3 mb-4'>
                 <Form.Group className="mb-3" controlId="formBasicName">
                     <Form.Control type="text" name="name" placeholder="Enter Your Name" required />
                 </Form.Group>
@@ -72,7 +72,7 @@ const Registar = () => {
                 </button>
             </Form>
             <div >
-                <p className=' text-white text-center mt-2 bg-info py-2 w-50 mx-auto rounded rounded-3'>Already have an Account? <Link className='fw-bold text-warning   ps-3' to='/login'>Login</Link></p>
+                <p className=' text-white text-center mt-2 bg-info py-2 col-10 col-md-6 mx-auto rounded rounded-3'>Already have an Account? <Link className='fw-bold text-warning   ps-3' to='/login'>Login</Link></p>
 
             </div>
         </div>

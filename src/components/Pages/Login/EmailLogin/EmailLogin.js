@@ -49,7 +49,7 @@ const EmailLogin = () => {
     return (
         <div className='mt-5'>
             <h2 className='mb-3'>Login</h2>
-            <Form className='w-75 mx-auto border border-primary p-3 rounded rounded-3 mb-4' onSubmit={handleFormSubmit}>
+            <Form className='col-10 col-md-6 mx-auto border border-primary p-3 rounded rounded-3 mb-4' onSubmit={handleFormSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control ref={emailRef} type="email" name="email" placeholder="Enter email" />
@@ -68,8 +68,8 @@ const EmailLogin = () => {
                 </button>
             </Form>
             <div >
-                <p className=' text-white text-center mt-2 bg-info py-2 w-50 mx-auto rounded rounded-3'>New to Water Warehouse? <Link className='fw-bold text-warning   ps-3' to='/registar'>Register</Link></p>
-                <p className=' text-white text-center mt-2 bg-primary py-2 w-50 mx-auto rounded rounded-3'>Forgot Your Password?<span style={{ cursor: "pointer" }} onClick={handlePasswordReset} className='fw-bold  text-warning ps-3'>Reset Password</span></p>
+                <p className=' text-white text-center mt-2 bg-info py-2 col-10 col-md-6 mx-auto rounded rounded-3'>New to Water Warehouse? <Link className='fw-bold text-warning   ps-3' to='/registar'>Register</Link></p>
+                <p className=' text-white text-center mt-2 bg-primary py-2 col-10 col-md-6 mx-auto rounded rounded-3'>Forgot Your Password?<span style={{ cursor: "pointer" }} onClick={handlePasswordReset} className='fw-bold  text-warning ps-3'>Reset Password</span></p>
 
             </div>
             <div>
