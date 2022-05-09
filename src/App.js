@@ -15,6 +15,7 @@ import ManageItems from './components/Pages/Items/ManageItems/ManageItems';
 import AddItem from './components/Pages/Items/AddItem/AddItem';
 import ItemDetails from './components/Pages/Items/ItemDetails/ItemDetails';
 import RequirAuth from './components/Shared/RequirAuth/RequirAuth';
+import About from './components/Pages/About/About';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path='/blog' element={<Blog></Blog>}></Route>
         <Route path='/login' element={<EmailLogin></EmailLogin>}></Route>
         <Route path='/registar' element={<Registar></Registar>}></Route>
+        <Route path='/about' element={<About></About>}></Route>
 
         <Route path='/additem' element={
           <RequirAuth>
