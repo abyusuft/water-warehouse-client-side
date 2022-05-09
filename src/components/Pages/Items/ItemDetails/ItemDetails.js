@@ -107,10 +107,10 @@ const ItemDetails = () => {
         <div className='mb-5'>
             <h2 className='mt-5 mb-5 fw-bolder text-uppercase'>Item Detail</h2>
             <div className='row'>
-                <div className='col-5 text-end'>
-                    <img src={img} style={{ maxHeight: '400px' }} alt="" />
+                <div className='col-sm-12 col-lg-5 p-4 text-lg-end'>
+                    <img className='p-3' src={img} style={{ maxHeight: '400px', maxWidth: '400px', width: '100%' }} alt="" />
                 </div>
-                <div className='col-7 text-start'>
+                <div className='col-sm-12 col-lg-7 p-4 text-lg-start'>
                     {item.itemName ? '' : <div class="spinner-border text-dark" role="status">
                         <span class="visually-hidden">Loading...</span>
                     </div>}

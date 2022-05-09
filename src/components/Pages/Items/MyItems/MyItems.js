@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Table } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -46,7 +47,7 @@ const MyItems = () => {
             <div className='m-5'>
                 <h2 className='mb-3'>My Items</h2>
                 <Link className='mb-3 d-block btn btn-success w-25 mx-auto' to='/additem'>Add New Item</Link>
-                <table className='w-100 mx-auto table table-hover'>
+                <Table responsive striped bordered hover variant="">
                     <thead style={{ backgroundColor: "black" }}>
                         <tr className='border'>
                             <th className='border text-white'>Photo</th>
@@ -59,9 +60,7 @@ const MyItems = () => {
                             <th className='border text-white'>Action</th>
                         </tr>
                     </thead>
-                    {items.length > 0 ? '' : <div class="spinner-border text-dark" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>}
+
                     <tbody>
                         {
                             items.map(item =>
@@ -90,7 +89,7 @@ const MyItems = () => {
                         }
                     </tbody>
 
-                </table>
+                </Table>
                 {
                     !items.length ? <p style={{ fontSize: '20px' }} className='text-danger mt-5 border-0 fw-bold'>You havent added any items Yet <Link className='mb-3 btn btn-success mx-auto' to='/additem'>Add New Item</Link></p> : ''
                 }

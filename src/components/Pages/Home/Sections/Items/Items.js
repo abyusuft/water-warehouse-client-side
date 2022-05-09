@@ -13,7 +13,7 @@ const Items = () => {
 
     return (
         <div className=''>
-            <h2 className='mt-5 mb-3 bg-black text-white p-3 text-uppercase'>Our Products</h2>
+            <h2 className='mb-3 bg-black text-white p-3 text-uppercase'>Our Products</h2>
             {items.length > 0 ? '' : <div class="spinner-border text-dark" role="status">
                 <span class="visually-hidden">Loading...</span>
             </div>}
