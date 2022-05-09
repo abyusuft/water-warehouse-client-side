@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Col, Row } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useItems from '../../../../../hooks/useItems';
 
 const Items = () => {
@@ -12,13 +12,13 @@ const Items = () => {
     }
 
     return (
-        <div>
+        <div className='border-bottom border-3'>
             <h2 className='mt-5 mb-3 bg-black text-white p-3'>This is Items Section</h2>
-            <Row xs={1} md={2} lg={3} className="g-3 w-75 mx-auto">
+            <Row xs={1} md={2} lg={3} className="g-3 w-75 mx-auto mt-3">
                 {
                     items.slice(0, 6).map(item => <Col key={item._id}>
                         <Card className='bg-light'>
-                            <Card.Img variant="top" src={item.img} />
+                            <Card.Img style={{ maxHeight: '300px' }} variant="top" src={item.img} />
                             <Card.Body>
                                 <Card.Title >{item.itemName}</Card.Title>
                                 <Card.Text>
@@ -39,7 +39,7 @@ const Items = () => {
                 }
             </Row>
 
-
+            <Link to='/manageitems' className='btn btn-primary my-4 px-5'>Manage All Inventoris</Link>
 
         </div>
     );
