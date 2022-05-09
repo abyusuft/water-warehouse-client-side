@@ -12,8 +12,8 @@ const Items = () => {
     }
 
     return (
-        <div className='border-bottom border-3'>
-            <h2 className='mt-5 mb-3 bg-black text-white p-3'>This is Items Section</h2>
+        <div className=''>
+            <h2 className='mt-5 mb-3 bg-black text-white p-3 text-uppercase'>Our Products</h2>
             <Row xs={1} md={2} lg={3} className="g-3 w-75 mx-auto mt-3">
                 {
                     items.slice(0, 6).map(item => <Col key={item._id}>
