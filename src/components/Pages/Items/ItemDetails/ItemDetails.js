@@ -111,6 +111,10 @@ const ItemDetails = () => {
                     <img src={img} style={{ maxHeight: '400px' }} alt="" />
                 </div>
                 <div className='col-7 text-start'>
+                    {item.itemName ? '' : <div class="spinner-border text-dark" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>}
+
                     <h2>{itemName}</h2>
                     <p>{description}</p>
                     <p>Supplier name: {supplier}</p>

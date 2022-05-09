@@ -21,7 +21,9 @@ const EmailLogin = () => {
         toast(`Error: ${error?.message}`);
     }
     if (loading) {
-
+        <div class="spinner-border text-dark" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
     }
     if (user || user1) {
         navigate(from, { replace: true });

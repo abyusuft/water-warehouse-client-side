@@ -59,6 +59,9 @@ const MyItems = () => {
                             <th className='border text-white'>Action</th>
                         </tr>
                     </thead>
+                    {items.length > 0 ? '' : <div class="spinner-border text-dark" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>}
                     <tbody>
                         {
                             items.map(item =>
