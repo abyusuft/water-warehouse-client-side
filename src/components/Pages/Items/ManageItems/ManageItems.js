@@ -37,7 +37,7 @@ const ManageItems = () => {
 
 
     return (
-        <div className='m-5'>
+        <div className='my-5'>
             <h2 className='mb-3'>Manage Items</h2>
             <Link className='mb-3 d-sm-block btn btn-success w-75  mx-auto' to='/additem'>Add New Item</Link>
             <Table responsive striped bordered hover variant="">
