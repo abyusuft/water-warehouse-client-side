@@ -78,12 +78,12 @@ const MyItems = () => {
                                         <button
                                             title='Update'
                                             onClick={() => handleUpdateItem(item._id)}
-                                            className='btn btn-primary me-2'>U</button>
+                                            className='btn btn-primary me-lg-2'>U</button>
                                         <button
                                             title='Delete'
 
                                             onClick={() => handleDeleteItem(item._id)}
-                                            className='btn btn-danger'>X</button></td>
+                                            className='btn btn-danger mt-lg-0 mt-sm-2'>X</button></td>
                                 </tr>
                             )
                         }
