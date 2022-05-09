@@ -49,7 +49,7 @@ const EmailLogin = () => {
     return (
         <div className='mt-5'>
             <h2 className='mb-3'>Login</h2>
-            <Form className='w-50 mx-auto border border-primary p-3 rounded rounded-3 mb-4' onSubmit={handleFormSubmit}>
+            <Form className='w-75 mx-auto border border-primary p-3 rounded rounded-3 mb-4' onSubmit={handleFormSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control ref={emailRef} type="email" name="email" placeholder="Enter email" />

@@ -50,7 +50,7 @@ const Registar = () => {
     return (
         <div className='mt-5'>
             <h2 className='mb-3'>Registar</h2>
-            <Form onSubmit={handleRegister} className='w-50 mx-auto border border-primary p-3 rounded rounded-3 mb-4'>
+            <Form onSubmit={handleRegister} className='w-75 mx-auto border border-primary p-3 rounded rounded-3 mb-4'>
                 <Form.Group className="mb-3" controlId="formBasicName">
                     <Form.Control type="text" name="name" placeholder="Enter Your Name" required />
                 </Form.Group>
