@@ -14,8 +14,8 @@ const Items = () => {
     return (
         <div className=''>
             <h2 id='items' className='mb-3 bg-black text-white p-3 text-uppercase'>Our Products</h2>
-            {items.length > 0 ? '' : <div class="spinner-border text-dark" role="status">
-                <span class="visually-hidden">Loading...</span>
+            {items.length > 0 ? '' : <div className="spinner-border text-dark" role="status">
+                <span className="visually-hidden">Loading...</span>
             </div>}
             <Row xs={1} md={2} lg={3} className="g-3 w-75 mx-auto mt-3">
                 {

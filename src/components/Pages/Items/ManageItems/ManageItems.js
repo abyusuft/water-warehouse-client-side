@@ -53,9 +53,7 @@ const ManageItems = () => {
                         <th className='border text-white'>Action</th>
                     </tr>
                 </thead>
-                {items.length > 0 ? '' : <div class="spinner-border text-dark" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>}
+
                 <tbody>
                     {
                         items.map(item =>
@@ -84,6 +82,9 @@ const ManageItems = () => {
                     }
                 </tbody>
             </Table>
+            {items.length > 0 ? '' : <div className="spinner-border text-dark" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </div>}
         </div >
     );
 };

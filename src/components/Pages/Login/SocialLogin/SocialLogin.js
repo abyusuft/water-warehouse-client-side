@@ -11,8 +11,8 @@ const SocialLogin = () => {
         toast(error.message);
     }
     if (loading) {
-        return <div class="spinner-border text-dark" role="status">
-            <span class="visually-hidden">Loading...</span>
+        return <div className="spinner-border text-dark" role="status">
+            <span className="visually-hidden">Loading...</span>
         </div>
 
     }
